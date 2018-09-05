@@ -1,6 +1,7 @@
 package radkwiat84.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -22,7 +23,7 @@ public class FamilyController {
 	@Autowired
 	FamilyRepository familyRepository;
 	
-	@PostMapping("/newfamily")
+	@PostMapping("/createfamily")
 	public Family createFamily(Family family) {
 		return familyRepository.save(family);
 	}
@@ -32,8 +33,8 @@ public class FamilyController {
 		return familyRepository.findAll();
 	}
 	
-	@GetMapping("family/{id}")
-	public Family readFamily(@PathVariable Integer id) {
-		return familyRepository.getOne(id);
+	@GetMapping("/family/{id}")
+	public Optional<Family> readFamily( @PathVariable Integer id) {
+		return familyRepository.findById(id);
 	}
 }
