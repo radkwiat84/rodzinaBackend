@@ -1,6 +1,7 @@
 package radkwiat84.model;
 
 import java.sql.Date;
+import java.util.GregorianCalendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,12 +17,12 @@ public class Father {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "father_id")
+//	@Column(name = "father_id")
 	private int id;
 
 	private String firstName;
 	private String secondName;
-	private Date birthDate;
+	private String birthDate;
 	private String pesel;
 
 	@OneToOne
@@ -51,11 +52,11 @@ public class Father {
 		this.secondName = secondName;
 	}
 
-	public Date getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -75,12 +76,22 @@ public class Father {
 		this.family = family;
 	}
 
-	public Father(String firstName, String secondName, Date birthDate, String pesel, Family family) {
+	public Father(String firstName, String secondName, String birthDate, String pesel, Family family) {
 		this.firstName = firstName;
 		this.secondName = secondName;
 		this.birthDate = birthDate;
 		this.pesel = pesel;
 		this.family = family;
+	}
+	
+	
+
+	public Father(String firstName, String secondName, String birthDate, String pesel) {
+		super();
+		this.firstName = firstName;
+		this.secondName = secondName;
+		this.birthDate = birthDate;
+		this.pesel = pesel;
 	}
 
 	public Father() {
