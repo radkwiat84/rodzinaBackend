@@ -17,10 +17,21 @@ public class Child {
 	private String firstName;
 	private String secondName;
 	private String sex;
+	private String birthDate;
 	private String pesel;
 
 	@ManyToOne
 	private Family family;
+
+	
+	
+	public String getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
+	}
 
 	public int getId() {
 		return id;
@@ -70,10 +81,14 @@ public class Child {
 		this.family = family;
 	}
 
-	public Child(String firstName, String secondName, String sex, String pesel, Family family) {
+	
+
+	public Child(String firstName, String secondName, String sex, String birthDate, String pesel, Family family) {
+		super();
 		this.firstName = firstName;
 		this.secondName = secondName;
 		this.sex = sex;
+		this.birthDate = birthDate;
 		this.pesel = pesel;
 		this.family = family;
 	}
@@ -84,7 +99,9 @@ public class Child {
 	@Override
 	public String toString() {
 		return "Child [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", sex=" + sex
-				+ ", pesel=" + pesel + ", family=" + family + "]";
+				+ ", birthDate=" + birthDate + ", pesel=" + pesel + ", family=" + family + "]";
 	}
+
+	
 
 }
