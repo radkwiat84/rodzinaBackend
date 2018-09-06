@@ -1,6 +1,5 @@
 package radkwiat84.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,7 +12,6 @@ public class Child {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "child_id")
 	private int id;
 
 	private String firstName;

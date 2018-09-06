@@ -6,13 +6,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import radkwiat84.model.Father;
 import radkwiat84.repositories.FatherRepository;
 
 
 
 @SpringBootApplication
-public class RodzinaBackendApplication implements CommandLineRunner{
+public class RodzinaBackendApplication{
 	
 	@Autowired
 	FatherRepository fatherRepository;
@@ -22,10 +21,6 @@ public class RodzinaBackendApplication implements CommandLineRunner{
 		SpringApplication.run(RodzinaBackendApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-//		fatherRepository.save(new Father("moja", "twoja", "1000-12-12", "moja"));
-	}
 
 
 	
