@@ -24,7 +24,7 @@ public class RodzinaBackendApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		fatherRepository.save(new Father("tata", "moj", "2014-12-12", "moja"));
+//		fatherRepository.save(new Father("moja", "twoja", "1000-12-12", "moja"));
 	}
 
 

@@ -18,11 +18,10 @@ public class Family {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "family_id")
 	private int id;
 
-	@OneToMany(mappedBy = "family", cascade = CascadeType.ALL)
-	private List<Child> children;
+//	@OneToMany(mappedBy = "family", cascade = CascadeType.ALL)
+//	private List<Child> children;
 
 	@OneToOne(mappedBy = "family", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Father father;
@@ -35,13 +34,13 @@ public class Family {
 		this.id = id;
 	}
 
-	public List<Child> getChildren() {
-		return children;
-	}
-
-	public void setChildren(List<Child> children) {
-		this.children = children;
-	}
+//	public List<Child> getChildren() {
+//		return children;
+//	}
+//
+//	public void setChildren(List<Child> children) {
+//		this.children = children;
+//	}
 
 	public Father getFather() {
 		return father;
@@ -52,7 +51,7 @@ public class Family {
 	}
 
 	public Family(List<Child> children, Father father) {
-		this.children = children;
+//		this.children = children;
 		this.father = father;
 	}
 
@@ -61,7 +60,9 @@ public class Family {
 
 	@Override
 	public String toString() {
-		return "Family [id=" + id + ", children=" + children + ", father=" + father + "]";
+		return "Family [id=" + id + ", "
+//				+ "children=" + children 
+				+ ", father=" + father + "]";
 	}
 
 }
