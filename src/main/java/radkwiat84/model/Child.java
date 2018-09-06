@@ -2,6 +2,7 @@ package radkwiat84.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 public class Child {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	private String firstName;
@@ -23,8 +24,6 @@ public class Child {
 	@ManyToOne
 	private Family family;
 
-	
-	
 	public String getBirthDate() {
 		return birthDate;
 	}
@@ -81,8 +80,6 @@ public class Child {
 		this.family = family;
 	}
 
-	
-
 	public Child(String firstName, String secondName, String sex, String birthDate, String pesel, Family family) {
 		super();
 		this.firstName = firstName;
@@ -101,7 +98,5 @@ public class Child {
 		return "Child [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", sex=" + sex
 				+ ", birthDate=" + birthDate + ", pesel=" + pesel + ", family=" + family + "]";
 	}
-
-	
 
 }

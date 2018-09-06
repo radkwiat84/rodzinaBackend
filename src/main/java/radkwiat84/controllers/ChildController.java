@@ -15,7 +15,7 @@ import radkwiat84.repositories.ChildRepository;
 @Transactional
 @RestController
 @RequestMapping("/child")
-@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*" )
+@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*")
 public class ChildController {
 
 	@Autowired
