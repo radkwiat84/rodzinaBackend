@@ -12,18 +12,24 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "families")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Family {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@OneToMany(mappedBy = "family", cascade = CascadeType.ALL)
 	private List<Child> children;
 
-	@OneToOne(mappedBy = "family", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "family", cascade = CascadeType.ALL)
+//	@JsonManagedReference
 	private Father father;
 
 	public int getId() {
@@ -34,13 +40,13 @@ public class Family {
 		this.id = id;
 	}
 
-	// public List<Child> getChildren() {
-	// return children;
-	// }
-	//
-	// public void setChildren(List<Child> children) {
-	// this.children = children;
-	// }
+	 public List<Child> getChildren() {
+	 return children;
+	 }
+	
+	 public void setChildren(List<Child> children) {
+	 this.children = children;
+	 }
 
 	public Father getFather() {
 		return father;
@@ -51,7 +57,7 @@ public class Family {
 	}
 
 	public Family(List<Child> children, Father father) {
-		// this.children = children;
+		this.children = children;
 		this.father = father;
 	}
 
@@ -60,8 +66,7 @@ public class Family {
 
 	@Override
 	public String toString() {
-		return "Family [id=" + id + ", "
-		// + "children=" + children
+		return "Family [id=" + id + ", " + "children=" + children
 				+ ", father=" + father + "]";
 	}
 

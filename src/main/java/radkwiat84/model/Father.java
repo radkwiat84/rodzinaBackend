@@ -7,13 +7,18 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "fathers")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Father {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-//	@Column(name = "father_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private String firstName;
@@ -22,6 +27,7 @@ public class Father {
 	private String pesel;
 
 	@OneToOne
+//	@JsonBackReference
 	private Family family;
 
 	public int getId() {
@@ -83,7 +89,6 @@ public class Father {
 	
 
 	public Father(String firstName, String secondName, String birthDate, String pesel) {
-		super();
 		this.firstName = firstName;
 		this.secondName = secondName;
 		this.birthDate = birthDate;
