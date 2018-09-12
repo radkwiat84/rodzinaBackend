@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import radkwiat84.repositories.FatherRepository;
 
 
-
 @SpringBootApplication
 public class RodzinaBackendApplication{
 	
