@@ -1,17 +1,10 @@
 package radkwiat84.controllers;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,10 +27,9 @@ public class FatherController {
 
 	@Autowired
 	FatherRepository fatherRepository;
-	
+
 	@Autowired
 	FamilyRepository familyRepository;
-	
 
 	@PostMapping("/father")
 	public Father createFather(@RequestBody Father father) {
@@ -49,15 +41,17 @@ public class FatherController {
 		return fatherRepository.findAll();
 	}
 
-	@GetMapping("/father/{id}")
+	@GetMapping("/fatherFamilyId/{id}")
 	public Father getFatherByFamilyId(@PathVariable int id) {
-		return fatherRepository.findFatherByFamilyId(id);
+		return fatherRepository.findByFamilyId(id);
 	}
 
 	@PutMapping("/father")
 	public Father addFatherToFamily(@RequestBody Father father) {
 		List<Family> families = familyRepository.findAll();
-		father.setFamily(families.get(families.size()-1));
+		father.setFamily(families.get(families.size() - 1));
 		return fatherRepository.save(father);
 	}
+	
+	
 }

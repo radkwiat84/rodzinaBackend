@@ -6,7 +6,7 @@ import radkwiat84.model.Father;
 
 public interface FatherRepository extends JpaRepository<Father, Integer> {
 
-	public Father findFatherByFamilyId(Integer id);
+	public Father findByFamilyId(Integer id);
 
 	
 }

@@ -20,7 +20,7 @@ import radkwiat84.repositories.FamilyRepository;
 @RestController
 @Transactional
 @RequestMapping("/family")
-@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class FamilyController {
 
 	@Autowired
@@ -39,5 +39,11 @@ public class FamilyController {
 	@GetMapping("/family/{id}")
 	public Optional<Family> readFamily( @PathVariable Integer id) {
 		return familyRepository.findById(id);
+	}
+	
+	@GetMapping("/currentFamily")
+	public Family findCurrentFamily() {
+		List<Family> families = familyRepository.findAll();
+		return families.get(families.size()-1);
 	}
 }

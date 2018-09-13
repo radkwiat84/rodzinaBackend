@@ -10,4 +10,5 @@ public interface ChildRepository extends JpaRepository<Child, Integer> {
 
 	public List<Child> findByFamilyIdIsNull();
 	
+	public List<Child> findAllByFamilyId(Integer id);	
 }
