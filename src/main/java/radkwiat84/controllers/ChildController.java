@@ -6,9 +6,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
+import javax.swing.text.AsyncBoxView.ChildState;
 import javax.transaction.Transactional;
 
+import org.hibernate.annotations.Where;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,8 +46,13 @@ public class ChildController {
 	}
 
 	@GetMapping("/children")
-	public List<Child> readChildren() {
+	public List<Child> readChildrenWithoutFamily() {
 		return childRepository.findByFamilyIdIsNull();
+	}
+
+	@GetMapping("/childrenWithFamily")
+	public List<Child> getChildrenWithFamily() {
+		return childRepository.findByFamilyIdIsNotNull();
 	}
 
 	@PutMapping("/child")
@@ -63,10 +72,17 @@ public class ChildController {
 		}
 		return childrenId;
 	}
-	
+
 	@GetMapping("/childById/{id}")
 	public Optional<Child> getChildById(@PathVariable int id) {
 		return childRepository.findById(id);
+	}
+
+	@GetMapping("/searchingChildren/{firstName}/{secondName}/{pesel}/{birthDate}/{sex}")
+	public List<Child> findChildrenFromSearchEngine(@PathVariable String firstName, @PathVariable String secondName,
+			@PathVariable String pesel, @PathVariable String birthDate, @PathVariable String sex) {
+		return childRepository.findAllByQuery(firstName, secondName, pesel, birthDate, sex);
+
 	}
 
 }

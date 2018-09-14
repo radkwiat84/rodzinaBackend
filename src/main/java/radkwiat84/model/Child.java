@@ -25,6 +25,8 @@ public class Child {
 	private String sex;
 	private String birthDate;
 	private String pesel;
+	
+	
 
 	@ManyToOne
 	private Family family;
